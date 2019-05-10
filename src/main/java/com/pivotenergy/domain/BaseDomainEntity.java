@@ -20,7 +20,7 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Log4j
-public abstract class BaseEntity<T> implements Entity<T>, Auditable<T>, Serializable {
+public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<T>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -116,7 +116,7 @@ public abstract class BaseEntity<T> implements Entity<T>, Auditable<T>, Serializ
         return (T) this;
     }
 
-    private boolean identityEquals(BaseEntity<T> other) {
+    private boolean identityEquals(BaseDomainEntity<T> other) {
         if (getId() == null) {
             return false;
         }
@@ -142,7 +142,7 @@ public abstract class BaseEntity<T> implements Entity<T>, Auditable<T>, Serializ
         }
 
         //noinspection unchecked
-        return identityEquals((BaseEntity<T>) o);
+        return identityEquals((BaseDomainEntity<T>) o);
     }
 
     @Override

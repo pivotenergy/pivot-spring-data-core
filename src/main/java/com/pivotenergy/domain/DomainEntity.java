@@ -1,6 +1,6 @@
 package com.pivotenergy.domain;
 
-public interface Entity<T> {
+public interface DomainEntity<T> {
     String getId();
     Boolean getDeleted();
     T setDeleted(boolean deleted);

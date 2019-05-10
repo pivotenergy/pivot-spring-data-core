@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 @Log4j
-public abstract class MultiTenantBaseEntity<T> extends BaseEntity<T> implements MultiTenant<T> {
+public abstract class MultiTenantBaseDomainEntity<T> extends BaseDomainEntity<T> implements MultiTenant<T> {
     @NotNull
     protected String groupId;
 
