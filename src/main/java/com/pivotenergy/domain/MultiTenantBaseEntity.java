@@ -2,7 +2,6 @@ package com.pivotenergy.domain;
 
 import com.pivotenergy.security.JWTAuthentication;
 import com.pivotenergy.security.model.UserSession;
-import com.sun.istack.internal.NotNull;
 import lombok.extern.log4j.Log4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 @Log4j
