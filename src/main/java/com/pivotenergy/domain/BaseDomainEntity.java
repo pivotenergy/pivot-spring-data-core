@@ -12,7 +12,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -31,21 +30,17 @@ public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<
     protected String id;
     protected Boolean deleted = false;
 
-    @NotNull
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     protected Date createdAt;
 
-    @NotNull
     @CreatedBy
     protected String createdBy;
 
-    @NotNull
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     protected Date updatedAt;
 
-    @NotNull
     @LastModifiedBy
     protected String updatedBy;
 
