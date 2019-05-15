@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <authentication-library.version>1.0.5-SNAPSHOT</authentication-library.version>
+        <pivot-security-core>0.1.0-SNAPSHOT</pivot-security-core>
         <org.apache.commons.version>3.4</org.apache.commons.version>
         <surefire.version>2.22.0</surefire.version>
         <lombok.version>1.18.0</lombok.version>
@@ -31,12 +31,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -55,8 +51,8 @@
         </dependency>
         <dependency>
             <groupId>com.pivotenergy</groupId>
-            <artifactId>authentication-library</artifactId>
-            <version>${authentication-library.version}</version>
+            <artifactId>pivot-security-core</artifactId>
+            <version>${pivot-security-core}</version>
         </dependency>
 
         <!-- Testing -->

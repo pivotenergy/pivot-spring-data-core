@@ -1,6 +1,6 @@
 package com.pivotenergy.domain;
 
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -19,7 +19,7 @@ import java.util.Date;
 @SuppressWarnings({"unused", "WeakerAccess"})
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@Log4j
+@Slf4j
 public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<T>, Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -153,31 +153,31 @@ public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<
 
     @PrePersist
     public void methodInvokedBeforePersist() {
-        log.debug(String.format("Invoked before persisting %s", this.getClass().getSimpleName()));
+        log.trace("Invoked before persisting {}", this.getClass().getSimpleName());
     }
 
     @PostPersist
     public void methodInvokedAfterPersist() {
-        log.debug(String.format("Invoked after persisting %s", this.getClass().getSimpleName()));
+        log.trace("Invoked after persisting {}", this.getClass().getSimpleName());
     }
 
     @PreUpdate
     public void methodInvokedBeforeUpdate() {
-        log.debug(String.format("Invoked before updating %s", this.getClass().getSimpleName()));
+        log.trace("Invoked before updating {}", this.getClass().getSimpleName());
     }
 
     @PostUpdate
     public void methodInvokedAfterUpdate() {
-        log.debug(String.format("Invoked after updating %s", this.getClass().getSimpleName()));
+        log.trace("Invoked after updating {}", this.getClass().getSimpleName());
     }
 
     @PreRemove
     public void methodInvokedBeforeRemove() {
-        log.debug(String.format("Invoked before removing %s", this.getClass().getSimpleName()));
+        log.trace("Invoked before removing {}", this.getClass().getSimpleName());
     }
 
     @PostRemove
     public void methodInvokedAfterRemove() {
-        log.debug(String.format("Invoked after removing %s", this.getClass().getSimpleName()));
+        log.trace("Invoked after removing {}", this.getClass().getSimpleName());
     }
 }
