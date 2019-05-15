@@ -1,23 +1,18 @@
 package com.pivotenergy.domain;
 
-import com.pivotenergy.security.JWTAuthentication;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
-public class SecurityAuditorAware implements AuditorAware<String> {
+public class SecurityAuditorAware implements AuditorAware<Optional<String>> {
 
     @Override
-    public String getCurrentAuditor() {
-
+    public Optional<String> getCurrentAuditor() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication instanceof JWTAuthentication)) {
-            return "_ANONYMOUS_";
-        }
-
-        return ((JWTAuthentication)authentication).getUserId();
+        return Optional.ofNullable(String.valueOf(authentication.getPrincipal()));
     }
 }

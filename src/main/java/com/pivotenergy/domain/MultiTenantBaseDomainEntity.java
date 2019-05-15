@@ -9,12 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 @Slf4j
 public abstract class MultiTenantBaseDomainEntity<T> extends BaseDomainEntity<T> implements MultiTenant<T> {
-    @NotNull
     @Column(insertable = false, updatable = false)
     protected String groupId;
 
