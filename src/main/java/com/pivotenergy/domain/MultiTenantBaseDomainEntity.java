@@ -1,18 +1,15 @@
 package com.pivotenergy.domain;
 
 import com.pivotenergy.security.JWTAuthentication;
-import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import javax.persistence.*;
 
 @MappedSuperclass
-@SuperBuilder
+@EntityListeners(AuditingEntityListener.class)
 @Slf4j
 public abstract class MultiTenantBaseDomainEntity<T> extends BaseDomainEntity<T> implements MultiTenant<T> {
     @Column(insertable = false, updatable = false)
