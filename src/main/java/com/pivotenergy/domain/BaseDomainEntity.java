@@ -1,5 +1,6 @@
 package com.pivotenergy.domain;
 
+import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -17,6 +18,7 @@ import java.util.Date;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @MappedSuperclass
+@SuperBuilder
 @EntityListeners(AuditingEntityListener.class)
 @Slf4j
 public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<T>, Serializable {
