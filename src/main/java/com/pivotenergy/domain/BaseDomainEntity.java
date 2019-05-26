@@ -27,6 +27,7 @@ public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "id", nullable = false, length = 128)
     protected String id;
+
     protected Boolean deleted = false;
 
     @CreatedDate
@@ -42,6 +43,10 @@ public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<
 
     @LastModifiedBy
     protected String updatedBy;
+
+    @Version
+    protected Long version = 0L;
+
 
     @Override
     public String getId() {
@@ -86,28 +91,33 @@ public abstract class BaseDomainEntity<T> implements DomainEntity<T>, Auditable<
         return updatedBy;
     }
 
-    public T setCreatedAt(Date createdAt) {
+    public Long getVersion() {
+        return version;
+    }
+
+    public BaseDomainEntity<T> setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-        //noinspection unchecked
-        return (T) this;
+        return this;
     }
 
-    public T setCreatedBy(String createdBy) {
+    public BaseDomainEntity<T> setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
-        //noinspection unchecked
-        return (T) this;
+        return this;
     }
 
-    public T setUpdatedAt(Date updatedAt) {
+    public BaseDomainEntity<T> setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-        //noinspection unchecked
-        return (T) this;
+        return this;
     }
 
-    public T setUpdatedBy(String updatedBy) {
+    public BaseDomainEntity<T> setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
-        //noinspection unchecked
-        return (T) this;
+        return this;
+    }
+
+    public BaseDomainEntity<T> setVersion(Long version) {
+        this.version = version;
+        return this;
     }
 
     private boolean identityEquals(BaseDomainEntity<T> other) {
